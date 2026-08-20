@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroDesk from "@/assets/hero-desk.jpg";
 
 export const Route = createFileRoute("/")({
@@ -74,12 +74,20 @@ function Index() {
           <a href="#top" className="font-display text-xl tracking-tight sm:text-2xl">
             Well Handled
           </a>
-          <a
-            href="#contact"
-            className="border border-foreground px-4 py-2 text-xs uppercase tracking-[0.18em] transition-colors hover:bg-foreground hover:text-background"
-          >
-            Enquire
-          </a>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <Link
+              to="/founder"
+              className="text-xs uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Founder
+            </Link>
+            <a
+              href="#contact"
+              className="border border-foreground px-4 py-2 text-xs uppercase tracking-[0.18em] transition-colors hover:bg-foreground hover:text-background"
+            >
+              Enquire
+            </a>
+          </div>
         </div>
       </header>
 
