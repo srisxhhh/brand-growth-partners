@@ -146,8 +146,54 @@
     border-color: var(--color-border);
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
   }
 }
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility bento-cell {
+  position: relative;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  transition:
+    background-color 0.35s ease,
+    transform 0.35s ease;
+
+  &:hover {
+    background-color: color-mix(in oklab, var(--card) 60%, var(--secondary));
+  }
+}
+
+@utility rule-line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border);
+}
+
