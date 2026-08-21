@@ -197,3 +197,27 @@
   background-color: var(--border);
 }
 
+
+@theme {
+  --color-agree: oklch(0.6 0.16 150);
+  --color-agree-foreground: oklch(0.99 0 0);
+}
+
+@utility neon-frame {
+  position: relative;
+  border: 1px solid var(--foreground);
+  box-shadow:
+    0 0 0 1px var(--foreground),
+    0 0 18px -2px color-mix(in oklab, var(--foreground) 55%, transparent),
+    0 0 48px -8px color-mix(in oklab, var(--foreground) 45%, transparent),
+    inset 0 0 24px -12px color-mix(in oklab, var(--foreground) 60%, transparent);
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow:
+      0 0 0 1px var(--foreground),
+      0 0 26px 0 color-mix(in oklab, var(--foreground) 65%, transparent),
+      0 0 70px -6px color-mix(in oklab, var(--foreground) 50%, transparent),
+      inset 0 0 24px -10px color-mix(in oklab, var(--foreground) 60%, transparent);
+  }
+}
