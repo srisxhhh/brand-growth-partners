@@ -187,6 +187,22 @@ function Founder() {
           </div>
         </section>
 
+        <section className="overflow-hidden border-t border-border">
+          <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-24">
+            <p className="eyebrow">A serious question</p>
+            <h2 className="mx-auto mt-6 max-w-3xl font-display text-3xl leading-[1.1] tracking-tight sm:text-5xl">
+              When your projects are already not handled well, why not give{" "}
+              <em className="italic">Well Handled</em> a chance? After all, everyone
+              deserves a second chance.
+            </h2>
+            <div className="flex justify-center">
+              <DecisionRow />
+            </div>
+          </div>
+        </section>
+
+
+
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
             <p className="eyebrow">How we work</p>
