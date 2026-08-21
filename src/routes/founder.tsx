@@ -109,17 +109,21 @@ function Founder() {
       <main>
         <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
           <div className="grid gap-12 md:grid-cols-[1fr_1.25fr] md:items-start md:gap-16">
-            <div className="relative">
-              <div className="aspect-[4/5] w-full overflow-hidden border border-border bg-muted">
+            <div className="relative md:sticky md:top-24">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="neon-frame w-full overflow-hidden bg-muted p-1.5"
+              >
                 <img
                   src={srishAsset.url}
-                  alt="Founder of Well Handled"
-                  width={800}
-                  height={1000}
-                  className="h-full w-full object-cover"
+                  alt="Srish, founder of Well Handled"
+                  className="block h-auto w-full object-contain"
                 />
-              </div>
+              </motion.div>
             </div>
+
 
             <div className="flex flex-col justify-center">
               <p className="eyebrow">Founder</p>
