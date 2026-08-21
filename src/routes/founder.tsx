@@ -15,9 +15,8 @@ function DecisionRow() {
       { x: -200, y: -80 },
       { x: 120, y: 140 },
     ];
-    let next = spots[Math.floor(Math.random() * spots.length)];
-    if (next.x === pos.x && next.y === pos.y) next = spots[0];
-    setPos(next);
+    const next = spots[Math.floor(Math.random() * spots.length)] ?? spots[0]!;
+    setPos(next.x === pos.x && next.y === pos.y ? spots[1]! : next);
   };
 
   return (
