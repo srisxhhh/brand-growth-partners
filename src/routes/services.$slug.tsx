@@ -80,7 +80,7 @@ function SiteHeader() {
 function ServicePage() {
   const { service } = Route.useLoaderData();
   const index = services.findIndex((s) => s.slug === service.slug);
-  const next = services[(index + 1) % services.length];
+  const next = services[(index + 1) % services.length] ?? services[0]!;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
