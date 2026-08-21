@@ -191,8 +191,7 @@ function Founder() {
             <p className="eyebrow">A serious question</p>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-3xl leading-[1.1] tracking-tight sm:text-5xl">
               When your projects are already not handled well, why not give{" "}
-              <em className="italic">Well Handled</em> a chance? After all, everyone
-              deserves a second chance.
+              <em className="italic">Well Handled</em> a chance? After all, every business deserves a shot .
             </h2>
             <div className="flex justify-center">
               <DecisionRow />
