@@ -1,5 +1,56 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { motion } from "motion/react";
 import srishAsset from "@/assets/srish.jpeg.asset.json";
+
+function DecisionRow() {
+  const [agreed, setAgreed] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const flee = () => {
+    const spots = [
+      { x: 180, y: -60 },
+      { x: -170, y: 70 },
+      { x: 210, y: 90 },
+      { x: -200, y: -80 },
+      { x: 120, y: 140 },
+    ];
+    let next = spots[Math.floor(Math.random() * spots.length)];
+    if (next.x === pos.x && next.y === pos.y) next = spots[0];
+    setPos(next);
+  };
+
+  return (
+    <div className="mt-8 flex flex-wrap items-center gap-4">
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => setAgreed(true)}
+        className="inline-flex items-center justify-center bg-agree px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
+      >
+        Agree
+      </a>
+      <motion.button
+        type="button"
+        aria-label="Naah — but you can't catch it"
+        onMouseEnter={flee}
+        onTouchStart={flee}
+        onFocus={flee}
+        onClick={(e) => e.preventDefault()}
+        animate={{ x: pos.x, y: pos.y }}
+        transition={{ type: "spring", stiffness: 260, damping: 18 }}
+        className="inline-flex cursor-not-allowed items-center justify-center border border-border px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+      >
+        Naah
+      </motion.button>
+      {agreed ? (
+        <span className="text-sm text-muted-foreground">Good call. Let's talk.</span>
+      ) : null}
+    </div>
+  );
+}
+
 
 const WHATSAPP_NUMBER = "9511202129";
 const WHATSAPP_MESSAGE = encodeURIComponent(
