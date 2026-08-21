@@ -1,8 +1,17 @@
+import svcWebsites from "@/assets/svc-websites.jpg";
+import svcApps from "@/assets/svc-apps.jpg";
+import svcUgc from "@/assets/svc-ugc.jpg";
+import svcBranding from "@/assets/svc-branding.jpg";
+import svcVideo from "@/assets/svc-video.jpg";
+import svcDesign from "@/assets/svc-design.jpg";
+import svcAds from "@/assets/svc-ads.jpg";
+
 export type Service = {
   slug: string;
   n: string;
   title: string;
   tagline: string;
+  image: string;
   intro: string;
   span: string;
   deliverables: string[];
@@ -13,6 +22,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "websites",
+    image: svcWebsites,
     n: "01",
     title: "Websites",
     tagline: "Designed, developed, hosted, maintained.",
@@ -36,6 +46,7 @@ export const services: Service[] = [
   },
   {
     slug: "mobile-apps",
+    image: svcApps,
     n: "02",
     title: "Mobile Apps",
     tagline: "Android and iOS, end to end.",
@@ -59,6 +70,7 @@ export const services: Service[] = [
   },
   {
     slug: "personalised-ugc",
+    image: svcUgc,
     n: "03",
     title: "Personalised UGC",
     tagline: "Creator-style footage built to perform.",
@@ -82,6 +94,7 @@ export const services: Service[] = [
   },
   {
     slug: "founder-branding",
+    image: svcBranding,
     n: "04",
     title: "Founder Branding",
     tagline: "Your story, told the way it happened.",
@@ -105,6 +118,7 @@ export const services: Service[] = [
   },
   {
     slug: "video-editing",
+    image: svcVideo,
     n: "05",
     title: "Video Editing",
     tagline: "Ads, reels, long-form — on schedule.",
@@ -128,6 +142,7 @@ export const services: Service[] = [
   },
   {
     slug: "graphic-design",
+    image: svcDesign,
     n: "06",
     title: "Graphic Design",
     tagline: "Systems, not one-off files.",
@@ -151,6 +166,7 @@ export const services: Service[] = [
   },
   {
     slug: "meta-ads",
+    image: svcAds,
     n: "07",
     title: "Meta Ads",
     tagline: "Structure, testing and spend, managed.",
