@@ -1,5 +1,55 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { motion } from "motion/react";
 import srishAsset from "@/assets/srish.jpeg.asset.json";
+
+function DecisionRow() {
+  const [agreed, setAgreed] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const flee = () => {
+    const spots = [
+      { x: 180, y: -60 },
+      { x: -170, y: 70 },
+      { x: 210, y: 90 },
+      { x: -200, y: -80 },
+      { x: 120, y: 140 },
+    ];
+    const next = spots[Math.floor(Math.random() * spots.length)] ?? spots[0]!;
+    setPos(next.x === pos.x && next.y === pos.y ? spots[1]! : next);
+  };
+
+  return (
+    <div className="mt-8 flex flex-wrap items-center gap-4">
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => setAgreed(true)}
+        className="inline-flex items-center justify-center bg-agree px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
+      >
+        Agree
+      </a>
+      <motion.button
+        type="button"
+        aria-label="Naah — but you can't catch it"
+        onMouseEnter={flee}
+        onTouchStart={flee}
+        onFocus={flee}
+        onClick={(e) => e.preventDefault()}
+        animate={{ x: pos.x, y: pos.y }}
+        transition={{ type: "spring", stiffness: 260, damping: 18 }}
+        className="inline-flex cursor-not-allowed items-center justify-center border border-border px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+      >
+        Naah
+      </motion.button>
+      {agreed ? (
+        <span className="text-sm text-muted-foreground">Good call. Let's talk.</span>
+      ) : null}
+    </div>
+  );
+}
+
 
 const WHATSAPP_NUMBER = "9511202129";
 const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -58,17 +108,21 @@ function Founder() {
       <main>
         <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
           <div className="grid gap-12 md:grid-cols-[1fr_1.25fr] md:items-start md:gap-16">
-            <div className="relative">
-              <div className="aspect-[4/5] w-full overflow-hidden border border-border bg-muted">
+            <div className="relative md:sticky md:top-24">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="neon-frame w-full overflow-hidden bg-muted p-1.5"
+              >
                 <img
                   src={srishAsset.url}
-                  alt="Founder of Well Handled"
-                  width={800}
-                  height={1000}
-                  className="h-full w-full object-cover"
+                  alt="Srish, founder of Well Handled"
+                  className="block h-auto w-full object-contain"
                 />
-              </div>
+              </motion.div>
             </div>
+
 
             <div className="flex flex-col justify-center">
               <p className="eyebrow">Founder</p>
@@ -131,6 +185,22 @@ function Founder() {
             </div>
           </div>
         </section>
+
+        <section className="overflow-hidden border-t border-border">
+          <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-24">
+            <p className="eyebrow">A serious question</p>
+            <h2 className="mx-auto mt-6 max-w-3xl font-display text-3xl leading-[1.1] tracking-tight sm:text-5xl">
+              When your projects are already not handled well, why not give{" "}
+              <em className="italic">Well Handled</em> a chance? After all, everyone
+              deserves a second chance.
+            </h2>
+            <div className="flex justify-center">
+              <DecisionRow />
+            </div>
+          </div>
+        </section>
+
+
 
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
