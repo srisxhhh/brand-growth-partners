@@ -143,9 +143,21 @@ function Index() {
                         &rarr;
                       </span>
                     </div>
-                    <h3 className="mt-5 font-display text-2xl tracking-tight sm:text-3xl">
-                      {s.title}
-                    </h3>
+                    <div className="mt-5 flex items-center gap-4">
+                      <span className="block h-14 w-14 shrink-0 overflow-hidden border border-border sm:h-16 sm:w-16">
+                        <img
+                          src={s.image}
+                          alt=""
+                          loading="lazy"
+                          width={640}
+                          height={640}
+                          className="h-full w-full object-cover grayscale transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </span>
+                      <h3 className="font-display text-2xl tracking-tight sm:text-3xl">
+                        {s.title}
+                      </h3>
+                    </div>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                       {s.tagline}
                     </p>
