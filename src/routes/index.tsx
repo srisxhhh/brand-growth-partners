@@ -202,10 +202,10 @@ function Index() {
                     variants={fadeUp}
                     className="border-t border-border py-5 sm:flex sm:gap-8"
                   >
-                    <dt className="font-display text-xl tracking-tight sm:w-40 sm:shrink-0">{t}</dt>
-                    <dd className="mt-1 text-sm leading-relaxed text-muted-foreground sm:mt-1.5">
+                    <p className="font-display text-xl tracking-tight sm:w-40 sm:shrink-0">{t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground sm:mt-1.5">
                       {d}
-                    </dd>
+                    </p>
                   </motion.div>
                 ))}
               </RevealGroup>
