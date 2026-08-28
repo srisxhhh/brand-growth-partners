@@ -165,7 +165,10 @@ function ServicePage() {
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
             <Reveal>
-              <h2 className="font-display text-3xl tracking-tight sm:text-4xl">How it runs</h2>
+              <h2 className="font-display text-3xl font-medium italic tracking-tight sm:text-4xl">
+                How it runs
+              </h2>
+
               <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
                 You give opinions and approvals. Everything between those two moments is ours.
               </p>

@@ -38,21 +38,21 @@ function DecisionRow() {
       >
         Agree
       </a>
-      {dodges < 4 ? (
-        <motion.button
-          type="button"
-          aria-label="Naah — but you can't catch it"
-          onMouseEnter={flee}
-          onTouchStart={flee}
-          onFocus={flee}
-          onClick={(e) => e.preventDefault()}
-          animate={{ x: pos.x, y: pos.y, opacity: pos.opacity }}
-          transition={{ type: "spring", stiffness: 240, damping: 16 }}
-          className="inline-flex cursor-not-allowed items-center justify-center border border-destructive px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-destructive"
-        >
-          Naah
-        </motion.button>
-      ) : null}
+      <motion.button
+        type="button"
+        aria-label="Naah — but you can't catch it"
+        onMouseEnter={flee}
+        onTouchStart={flee}
+        onFocus={flee}
+        onClick={(e) => e.preventDefault()}
+        animate={{ x: pos.x, y: pos.y, opacity: pos.opacity }}
+        transition={{ type: "spring", stiffness: 240, damping: 16 }}
+        style={{ pointerEvents: dodges >= 4 ? "none" : "auto" }}
+        className="inline-flex cursor-not-allowed items-center justify-center border border-destructive px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-destructive"
+      >
+        Naah
+      </motion.button>
+
       {agreed ? (
         <span className="text-sm text-muted-foreground">Good call. Let's talk.</span>
       ) : dodges >= 4 ? (
