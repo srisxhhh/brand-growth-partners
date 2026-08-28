@@ -170,15 +170,34 @@ function ServicePage() {
               </p>
             </Reveal>
 
-            <RevealGroup className="mt-10 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            <RevealGroup className="mt-10 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2">
               {service.process.map((p, i) => (
-                <motion.article key={p.step} variants={fadeUp} className="bento-cell">
-                  <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-5 font-display text-2xl tracking-tight">{p.step}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.detail}</p>
+                <motion.article key={p.step} variants={fadeUp} className="bento-cell group">
+                  <div className="flex items-start gap-5">
+                    <span className="block h-20 w-20 shrink-0 overflow-hidden border border-border sm:h-24 sm:w-24">
+                      <img
+                        src={p.image}
+                        alt={`${p.step} — ${service.title}`}
+                        loading="lazy"
+                        width={640}
+                        height={640}
+                        className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </span>
+                    <div>
+                      <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
+                      <h3 className="mt-2 font-display text-3xl font-medium italic tracking-tight">
+                        {p.step}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="mt-5 font-sans text-sm leading-relaxed text-muted-foreground">
+                    {p.detail}
+                  </p>
                 </motion.article>
               ))}
             </RevealGroup>
+
 
             <Reveal className="mt-px" delay={0.1}>
               <div className="border border-border border-t-0 bg-foreground p-7 text-background sm:p-10">
