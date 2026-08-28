@@ -6,6 +6,37 @@ import svcVideo from "@/assets/svc-video.jpg";
 import svcDesign from "@/assets/svc-design.jpg";
 import svcAds from "@/assets/svc-ads.jpg";
 
+import web1 from "@/assets/steps/websites-1.jpg";
+import web2 from "@/assets/steps/websites-2.jpg";
+import web3 from "@/assets/steps/websites-3.jpg";
+import web4 from "@/assets/steps/websites-4.jpg";
+import app1 from "@/assets/steps/mobile-apps-1.jpg";
+import app2 from "@/assets/steps/mobile-apps-2.jpg";
+import app3 from "@/assets/steps/mobile-apps-3.jpg";
+import app4 from "@/assets/steps/mobile-apps-4.jpg";
+import ugc1 from "@/assets/steps/personalised-ugc-1.jpg";
+import ugc2 from "@/assets/steps/personalised-ugc-2.jpg";
+import ugc3 from "@/assets/steps/personalised-ugc-3.jpg";
+import ugc4 from "@/assets/steps/personalised-ugc-4.jpg";
+import brand1 from "@/assets/steps/founder-branding-1.jpg";
+import brand2 from "@/assets/steps/founder-branding-2.jpg";
+import brand3 from "@/assets/steps/founder-branding-3.jpg";
+import brand4 from "@/assets/steps/founder-branding-4.jpg";
+import vid1 from "@/assets/steps/video-editing-1.jpg";
+import vid2 from "@/assets/steps/video-editing-2.jpg";
+import vid3 from "@/assets/steps/video-editing-3.jpg";
+import vid4 from "@/assets/steps/video-editing-4.jpg";
+import des1 from "@/assets/steps/graphic-design-1.jpg";
+import des2 from "@/assets/steps/graphic-design-2.jpg";
+import des3 from "@/assets/steps/graphic-design-3.jpg";
+import des4 from "@/assets/steps/graphic-design-4.jpg";
+import ads1 from "@/assets/steps/meta-ads-1.jpg";
+import ads2 from "@/assets/steps/meta-ads-2.jpg";
+import ads3 from "@/assets/steps/meta-ads-3.jpg";
+import ads4 from "@/assets/steps/meta-ads-4.jpg";
+
+export type ProcessStep = { step: string; detail: string; image: string };
+
 export type Service = {
   slug: string;
   n: string;
@@ -15,7 +46,7 @@ export type Service = {
   intro: string;
   span: string;
   deliverables: string[];
-  process: { step: string; detail: string }[];
+  process: ProcessStep[];
   outcome: string;
 };
 
@@ -37,10 +68,30 @@ export const services: Service[] = [
       "Analytics and conversion tracking wired up",
     ],
     process: [
-      { step: "Direction", detail: "We propose structure, tone and visual language for approval." },
-      { step: "Build", detail: "Design and development run together, reviewed as it takes shape." },
-      { step: "Launch", detail: "We ship, monitor and hand you nothing but the link." },
-      { step: "Maintain", detail: "Updates, fixes and improvements continue without briefs." },
+      {
+        step: "Direction",
+        detail:
+          "We interrogate the proposition before a single pixel is drawn — audience, objection, hierarchy, tone. What returns to you is a considered architecture and visual language, articulated well enough to approve in one sitting.",
+        image: web1,
+      },
+      {
+        step: "Build",
+        detail:
+          "Design and engineering advance in tandem, not in relay. Semantic markup, deliberate performance budgets and search fundamentals are written in from the first commit rather than retrofitted at the end.",
+        image: web2,
+      },
+      {
+        step: "Launch",
+        detail:
+          "Migration, DNS, certificates, redirects and analytics are orchestrated quietly on our side. You receive a link and a working site, not a checklist and a deadline.",
+        image: web3,
+      },
+      {
+        step: "Maintain",
+        detail:
+          "Uptime, speed and content stay under continuous supervision. Fixes, refinements and new pages ship on a standing rhythm — no briefs, no invoices for every small ask.",
+        image: web4,
+      },
     ],
     outcome: "A site that stays fast, accurate and online — permanently.",
   },
@@ -61,10 +112,30 @@ export const services: Service[] = [
       "Store listing copy and creative",
     ],
     process: [
-      { step: "Scope", detail: "We define the smallest version that actually earns its keep." },
-      { step: "Design", detail: "Screens and flows come to you resolved, not as wireframe homework." },
-      { step: "Ship", detail: "Builds, review submissions and launch handled by us." },
-      { step: "Iterate", detail: "Updates shipped on a rhythm, reported weekly." },
+      {
+        step: "Scope",
+        detail:
+          "We reduce the ambition to the version that genuinely earns its keep. Every feature is weighed against effort and adoption, so the first release is deliberate rather than diluted.",
+        image: app1,
+      },
+      {
+        step: "Design",
+        detail:
+          "Screens arrive resolved — states, edge cases and gestures accounted for on both platforms. You review finished interface work, not wireframe homework that needs imagination to read.",
+        image: app2,
+      },
+      {
+        step: "Ship",
+        detail:
+          "Builds, provisioning, review submissions and store assets are handled entirely by us. We absorb the bureaucracy of Apple and Google so your launch date holds.",
+        image: app3,
+      },
+      {
+        step: "Iterate",
+        detail:
+          "Crash traces, retention and usage inform a standing update cadence. Improvements land on schedule and are reported in plain language every week.",
+        image: app4,
+      },
     ],
     outcome: "An app that ships, updates and stays healthy without you managing it.",
   },
@@ -85,10 +156,30 @@ export const services: Service[] = [
       "Performance read-back on what won",
     ],
     process: [
-      { step: "Angle", detail: "We pick the claims and hooks worth testing first." },
-      { step: "Produce", detail: "Creators, scripts and shoots organised entirely by us." },
-      { step: "Test", detail: "Variants go live and get judged on numbers, not taste." },
-      { step: "Scale", detail: "Winners get iterated; losers get retired quietly." },
+      {
+        step: "Angle",
+        detail:
+          "We isolate the claims, frictions and hooks worth spending money against. Each concept is written to a specific objection, so the test proves something instead of merely producing content.",
+        image: ugc1,
+      },
+      {
+        step: "Produce",
+        detail:
+          "Casting, scripting, shoot logistics and post are organised end to end by us. Creators are matched to your audience rather than to whoever is available.",
+        image: ugc2,
+      },
+      {
+        step: "Test",
+        detail:
+          "Variants go live in disciplined cohorts and are judged on cost per outcome, not on taste. Hooks, openings and formats are isolated so the winner is attributable.",
+        image: ugc3,
+      },
+      {
+        step: "Scale",
+        detail:
+          "Proven concepts are iterated into families of assets while fatigued ones retire quietly. Production volume is tied to what the numbers justify.",
+        image: ugc4,
+      },
     ],
     outcome: "A steady supply of creative that keeps acquisition costs honest.",
   },
@@ -109,10 +200,30 @@ export const services: Service[] = [
       "Ghost-drafted posts in your own voice for approval",
     ],
     process: [
-      { step: "Listen", detail: "We interview you properly before writing a single line." },
-      { step: "Shape", detail: "Your story becomes a small set of things worth saying often." },
-      { step: "Publish", detail: "Drafted, scheduled and posted after your approval." },
-      { step: "Compound", detail: "The presence builds while your attention stays elsewhere." },
+      {
+        step: "Listen",
+        detail:
+          "We interview you at length before a line is written — the decisions, the failures, the convictions. The material is yours; our work is to find the parts worth repeating.",
+        image: brand1,
+      },
+      {
+        step: "Shape",
+        detail:
+          "That raw history is distilled into a handful of durable narratives and content pillars. Everything published afterwards is a variation on themes you already believe.",
+        image: brand2,
+      },
+      {
+        step: "Publish",
+        detail:
+          "Drafting, filming, scheduling and posting run on a calendar we maintain. You approve in batches; nothing goes out in a voice that isn't recognisably yours.",
+        image: brand3,
+      },
+      {
+        step: "Compound",
+        detail:
+          "Consistency does the heavy lifting. The presence accumulates reach, inbound conversations and credibility while your attention stays on the business.",
+        image: brand4,
+      },
     ],
     outcome: "A public presence that sounds like you and opens doors on its own.",
   },
@@ -133,10 +244,30 @@ export const services: Service[] = [
       "Organised asset library you actually own",
     ],
     process: [
-      { step: "Intake", detail: "Footage comes to us; nothing sits in your drive." },
-      { step: "Edit", detail: "First cut arrives close, not as a rough guess." },
-      { step: "Notes", detail: "One round of your opinions, applied properly." },
-      { step: "Deliver", detail: "Every format and ratio exported and filed." },
+      {
+        step: "Intake",
+        detail:
+          "Footage, audio and references are ingested, catalogued and backed up on our side. Nothing lingers half-organised in your drive waiting for a decision.",
+        image: vid1,
+      },
+      {
+        step: "Edit",
+        detail:
+          "The first cut arrives close to final — pacing, sound design, grade and captions already considered. You react to a finished argument, not a rough assembly.",
+        image: vid2,
+      },
+      {
+        step: "Notes",
+        detail:
+          "One consolidated round of your opinions, applied precisely and without negotiation. Ambiguity is resolved by us before it becomes another revision cycle.",
+        image: vid3,
+      },
+      {
+        step: "Deliver",
+        detail:
+          "Every ratio, platform spec and thumbnail is exported, named and filed into a library you own outright. Retrieval takes seconds, not a message to us.",
+        image: vid4,
+      },
     ],
     outcome: "Video that lands on time, every week, without chasing.",
   },
@@ -157,10 +288,30 @@ export const services: Service[] = [
       "Brand guidelines your future team can follow",
     ],
     process: [
-      { step: "Audit", detail: "We look at what exists before replacing anything." },
-      { step: "Direction", detail: "Two considered routes, not twelve mood boards." },
-      { step: "Systemise", detail: "The chosen route becomes rules and templates." },
-      { step: "Apply", detail: "Everything new gets made inside the system." },
+      {
+        step: "Audit",
+        detail:
+          "We examine everything currently in circulation before proposing replacements. Equity worth keeping is identified; incoherence is documented rather than assumed.",
+        image: des1,
+      },
+      {
+        step: "Direction",
+        detail:
+          "Two fully resolved routes, each defensible on its own terms — not twelve mood boards demanding your interpretation. You choose a direction, not a homework assignment.",
+        image: des2,
+      },
+      {
+        step: "Systemise",
+        detail:
+          "The chosen route becomes grids, type scales, colour rules and templates. Consistency stops depending on whoever happens to open the file next.",
+        image: des3,
+      },
+      {
+        step: "Apply",
+        detail:
+          "Every subsequent asset — campaign, packaging, deck, social — is produced inside that system. The brand looks deliberate at volume and at speed.",
+        image: des4,
+      },
     ],
     outcome: "A brand that looks deliberate on every surface it touches.",
   },
@@ -181,10 +332,30 @@ export const services: Service[] = [
       "Weekly reporting in plain numbers",
     ],
     process: [
-      { step: "Diagnose", detail: "Tracking and structure get fixed before spend scales." },
-      { step: "Test", detail: "Creative and audiences tested in a disciplined order." },
-      { step: "Scale", detail: "Budget moves toward what proves itself." },
-      { step: "Report", detail: "Spend, CPA and return reviewed with you weekly." },
+      {
+        step: "Diagnose",
+        detail:
+          "Pixel integrity, event mapping and account architecture are audited before budget moves. Scaling on broken measurement is expensive guesswork, so we fix the foundation first.",
+        image: ads1,
+      },
+      {
+        step: "Test",
+        detail:
+          "Creative, audiences and placements are examined in a deliberate sequence with one variable at a time. Conclusions are statistical, not anecdotal.",
+        image: ads2,
+      },
+      {
+        step: "Scale",
+        detail:
+          "Budget migrates steadily toward what has demonstrably proven itself. Increases are paced so learning phases aren't reset and efficiency isn't sacrificed for volume.",
+        image: ads3,
+      },
+      {
+        step: "Report",
+        detail:
+          "Spend, cost per acquisition and return are reviewed with you weekly in plain figures. You always know what the account cost and what it produced.",
+        image: ads4,
+      },
     ],
     outcome: "Spend you can explain, with a cost per customer you can plan around.",
   },
