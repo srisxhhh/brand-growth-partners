@@ -5,22 +5,30 @@ import srishAsset from "@/assets/srish.jpeg.asset.json";
 
 function DecisionRow() {
   const [agreed, setAgreed] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [dodges, setDodges] = useState(0);
+  const [pos, setPos] = useState({ x: 0, y: 0, opacity: 1 });
+
+  const spots = [
+    { x: 170, y: -70 },
+    { x: -180, y: 60 },
+    { x: 200, y: 90 },
+    { x: -160, y: -90 },
+  ];
 
   const flee = () => {
-    const spots = [
-      { x: 180, y: -60 },
-      { x: -170, y: 70 },
-      { x: 210, y: 90 },
-      { x: -200, y: -80 },
-      { x: 120, y: 140 },
-    ];
-    const next = spots[Math.floor(Math.random() * spots.length)] ?? spots[0]!;
-    setPos(next.x === pos.x && next.y === pos.y ? spots[1]! : next);
+    if (dodges >= 4) return;
+    const next = dodges + 1;
+    setDodges(next);
+    if (next > 3) {
+      setPos({ x: typeof window !== "undefined" ? window.innerWidth : 1400, y: -180, opacity: 0 });
+    } else {
+      const spot = spots[next] ?? spots[0]!;
+      setPos({ x: spot.x, y: spot.y, opacity: 1 });
+    }
   };
 
   return (
-    <div className="mt-8 flex flex-wrap items-center gap-4">
+    <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
         target="_blank"
@@ -30,25 +38,30 @@ function DecisionRow() {
       >
         Agree
       </a>
-      <motion.button
-        type="button"
-        aria-label="Naah — but you can't catch it"
-        onMouseEnter={flee}
-        onTouchStart={flee}
-        onFocus={flee}
-        onClick={(e) => e.preventDefault()}
-        animate={{ x: pos.x, y: pos.y }}
-        transition={{ type: "spring", stiffness: 260, damping: 18 }}
-        className="inline-flex cursor-not-allowed items-center justify-center border border-border px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-muted-foreground"
-      >
-        Naah
-      </motion.button>
+      {dodges < 4 ? (
+        <motion.button
+          type="button"
+          aria-label="Naah — but you can't catch it"
+          onMouseEnter={flee}
+          onTouchStart={flee}
+          onFocus={flee}
+          onClick={(e) => e.preventDefault()}
+          animate={{ x: pos.x, y: pos.y, opacity: pos.opacity }}
+          transition={{ type: "spring", stiffness: 240, damping: 16 }}
+          className="inline-flex cursor-not-allowed items-center justify-center border border-destructive px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-destructive"
+        >
+          Naah
+        </motion.button>
+      ) : null}
       {agreed ? (
         <span className="text-sm text-muted-foreground">Good call. Let's talk.</span>
+      ) : dodges >= 4 ? (
+        <span className="text-sm text-muted-foreground">Gone. Told you it wasn't catchable.</span>
       ) : null}
     </div>
   );
 }
+
 
 
 const WHATSAPP_NUMBER = "9511202129";

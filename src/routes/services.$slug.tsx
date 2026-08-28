@@ -141,9 +141,10 @@ function ServicePage() {
         <section className="border-t border-border">
           <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-[1fr_1.3fr]">
             <Reveal>
-              <h2 className="font-display text-3xl leading-[1.1] tracking-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-medium italic leading-[1.1] tracking-tight sm:text-4xl">
                 What you get
               </h2>
+
             </Reveal>
             <RevealGroup>
               {service.deliverables.map((d) => (
