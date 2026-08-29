@@ -9,26 +9,62 @@ export const Route = createFileRoute("/services/$slug")({
     if (!service) throw notFound();
     return { service };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
     if (!loaderData) {
       return {
         meta: [{ title: "Service not found — Well Handled" }, { name: "robots", content: "noindex" }],
       };
     }
     const { service } = loaderData;
-    const title = `${service.title} — Well Handled`;
+    const title = `${service.title} — ${service.tagline} | Well Handled`.slice(0, 60);
     const description = `${service.tagline} ${service.intro}`.slice(0, 155);
+    const path = `/services/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:url", content: path },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: path }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: service.title,
+            serviceType: service.title,
+            description,
+            provider: { "@type": "Organization", name: "Well Handled" },
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: `${service.title} deliverables`,
+              itemListElement: service.deliverables.map((d) => ({
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: d },
+              })),
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Services", item: "/" },
+              { "@type": "ListItem", position: 2, name: service.title, item: path },
+            ],
+          }),
+        },
+      ],
     };
   },
+
   notFoundComponent: ServiceNotFound,
   component: ServicePage,
 });
