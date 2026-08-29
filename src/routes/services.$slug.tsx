@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { serviceBySlug, services } from "@/lib/services";
 import { Reveal, RevealGroup, RisingText, fadeUp, pageTransition } from "@/components/reveal";
+import { LeadForm } from "@/components/lead-form";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -320,6 +321,12 @@ function ServicePage() {
                 </p>
               </div>
             </Reveal>
+
+            <div className="mt-10">
+              <LeadForm serviceTitle={service.title} />
+            </div>
+
+
 
 
             <Reveal className="mt-16">
