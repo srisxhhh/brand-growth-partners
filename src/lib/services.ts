@@ -35,6 +35,8 @@ import ads2 from "@/assets/steps/meta-ads-2.jpg";
 import ads3 from "@/assets/steps/meta-ads-3.jpg";
 import ads4 from "@/assets/steps/meta-ads-4.jpg";
 
+export type FaqItem = { q: string; a: string };
+
 export type ProcessStep = { step: string; detail: string; image: string };
 
 export type Service = {
@@ -48,6 +50,7 @@ export type Service = {
   deliverables: string[];
   process: ProcessStep[];
   outcome: string;
+  faq: FaqItem[];
 };
 
 export const services: Service[] = [
@@ -94,6 +97,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "A site that stays fast, accurate and online — permanently.",
+    faq: [
+      {
+        q: "How long does a website take?",
+        a:
+          "Most builds go live in three to five weeks, depending on page count and how quickly approvals come back. You'll see the design direction inside the first week.",
+      },
+      {
+        q: "Is hosting and maintenance included?",
+        a:
+          "Yes. Hosting, domains, SSL, uptime monitoring and ongoing content updates are all handled by us \u2014 there is no separate vendor to chase.",
+      },
+      {
+        q: "Can you update copy or pages after launch?",
+        a:
+          "Send a message and it's done. Routine copy, page and image changes ship on a standing rhythm without a new brief or invoice each time.",
+      },
+      {
+        q: "Will it work well on phones?",
+        a:
+          "Every build is designed mobile-first and tested across Android and iOS, so it feels the same on a phone as it does on a laptop.",
+      },
+    ],
   },
   {
     slug: "mobile-apps",
@@ -138,6 +163,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "An app that ships, updates and stays healthy without you managing it.",
+    faq: [
+      {
+        q: "Do you build for both Android and iOS?",
+        a:
+          "Yes. One codebase ships to both stores, so features and fixes land on Android and iOS at the same time.",
+      },
+      {
+        q: "Do you handle the App Store and Play Store submissions?",
+        a:
+          "We handle store listings, review responses, screenshots and release management end to end. You only approve the final build.",
+      },
+      {
+        q: "What happens after launch?",
+        a:
+          "We monitor crashes, performance and reviews, then ship updates on a regular cadence as part of the retainer.",
+      },
+      {
+        q: "Can you take over an existing app?",
+        a:
+          "Usually yes. We audit the current codebase first and tell you honestly whether to continue it or rebuild.",
+      },
+    ],
   },
   {
     slug: "personalised-ugc",
@@ -182,6 +229,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "A steady supply of creative that keeps acquisition costs honest.",
+    faq: [
+      {
+        q: "Do you provide the creators?",
+        a:
+          "Yes. We cast, brief and direct creators who fit your category, so you never source or negotiate talent yourself.",
+      },
+      {
+        q: "How many ad creatives do we get each month?",
+        a:
+          "Volume is set to your spend, but most brands run a steady batch of fresh hooks and edits every month so testing never stalls.",
+      },
+      {
+        q: "Do you also run the ads?",
+        a:
+          "We can. Creative and Meta ads work together well, and most clients pair them so learnings feed straight back into the next batch.",
+      },
+      {
+        q: "Who owns the footage?",
+        a:
+          "You do. All raw footage and finished cuts are yours to reuse across any channel.",
+      },
+    ],
   },
   {
     slug: "founder-branding",
@@ -226,6 +295,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "A public presence that sounds like you and opens doors on its own.",
+    faq: [
+      {
+        q: "Do I have to write the posts myself?",
+        a:
+          "No. We shape your point of view through short interviews, then write and schedule everything. You approve before anything goes live.",
+      },
+      {
+        q: "Will it still sound like me?",
+        a:
+          "That's the whole point. Voice is built from your own words and reviewed with you until posts read as though you typed them.",
+      },
+      {
+        q: "Which platforms do you cover?",
+        a:
+          "Usually LinkedIn and Instagram, with X or YouTube added when your audience actually lives there.",
+      },
+      {
+        q: "How much of my time does this take?",
+        a:
+          "Roughly an hour a fortnight for a recorded conversation, plus quick approvals.",
+      },
+    ],
   },
   {
     slug: "video-editing",
@@ -270,6 +361,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "Video that lands on time, every week, without chasing.",
+    faq: [
+      {
+        q: "What turnaround can we expect?",
+        a:
+          "Standard edits return within two to three working days, with same-week turnaround on priority cuts.",
+      },
+      {
+        q: "Do you handle subtitles and formats?",
+        a:
+          "Yes. Every video is delivered in the aspect ratios and caption styles each platform needs.",
+      },
+      {
+        q: "How do we send footage?",
+        a:
+          "Drop raw files into a shared folder. We take it from there \u2014 no naming conventions or file wrangling required.",
+      },
+      {
+        q: "How many revisions are included?",
+        a:
+          "Revisions are unlimited within the agreed direction; we'd rather get it right than count rounds.",
+      },
+    ],
   },
   {
     slug: "graphic-design",
@@ -314,6 +427,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "A brand that looks deliberate on every surface it touches.",
+    faq: [
+      {
+        q: "Do you work from an existing brand?",
+        a:
+          "Yes. We can extend the identity you already have, or rebuild the system if it's holding you back.",
+      },
+      {
+        q: "What kind of assets do you cover?",
+        a:
+          "Ad creative, decks, packaging, social templates, print and anything else the brand touches.",
+      },
+      {
+        q: "How fast are day-to-day requests?",
+        a:
+          "Most single-asset requests come back within 48 hours through a standing request queue.",
+      },
+      {
+        q: "Do we get editable source files?",
+        a:
+          "Always. Source files and a documented brand system are handed over and kept current.",
+      },
+    ],
   },
   {
     slug: "meta-ads",
@@ -358,6 +493,28 @@ export const services: Service[] = [
       },
     ],
     outcome: "Spend you can explain, with a cost per customer you can plan around.",
+    faq: [
+      {
+        q: "What ad spend do you work with?",
+        a:
+          "We work best with brands spending consistently each month, and we'll tell you upfront if spend is too thin for testing to be meaningful.",
+      },
+      {
+        q: "Do you make the creative too?",
+        a:
+          "Yes. Creative, UGC and media buying sit under one roof, which is why testing moves faster.",
+      },
+      {
+        q: "How is performance reported?",
+        a:
+          "A weekly call plus a plain-English report covering spend, cost per outcome and what changes next.",
+      },
+      {
+        q: "How soon do results show?",
+        a:
+          "Early signal usually appears within two weeks; stable, planable cost per customer typically takes four to six.",
+      },
+    ],
   },
 ];
 
