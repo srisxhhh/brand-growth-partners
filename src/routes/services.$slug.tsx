@@ -250,21 +250,77 @@ function ServicePage() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section className="border-t border-border">
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-24 md:grid-cols-[1fr_1.3fr]">
+            <Reveal>
+              <span className="eyebrow">FAQ</span>
+              <h2 className="mt-4 font-display text-3xl font-medium italic leading-[1.1] tracking-tight sm:text-4xl">
+                Questions we get asked
+              </h2>
+              <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
+                Anything not covered here, ask us on the call — we answer plainly.
+              </p>
+            </Reveal>
+            <RevealGroup>
+              {service.faq.map((item) => (
+                <motion.details
+                  key={item.q}
+                  variants={fadeUp}
+                  className="group border-t border-border py-5 first:border-t-0"
+                >
+                  <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 font-display text-xl font-medium italic tracking-tight sm:text-2xl">
+                    {item.q}
+                    <span className="shrink-0 text-base transition-transform duration-300 group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-xl font-sans text-sm leading-relaxed text-muted-foreground">
+                    {item.a}
+                  </p>
+                </motion.details>
+              ))}
+            </RevealGroup>
+          </div>
+        </section>
+
         {/* CTA + next */}
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-            <Reveal className="text-center">
-              <p className="eyebrow">Ready when you are</p>
-              <h2 className="mx-auto mt-5 max-w-2xl font-display text-3xl leading-[1.08] tracking-tight sm:text-5xl">
-                Hand {service.title.toLowerCase()} over.
-              </h2>
-              <a
-                href="mailto:hello@wellhandled.co"
-                className="mt-9 inline-block border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
-              >
-                hello@wellhandled.co
-              </a>
+            <Reveal>
+              <div className="border border-border bg-foreground p-8 text-center text-background sm:p-14">
+                <p className="eyebrow text-background/60">Ready when you are</p>
+                <h2 className="mx-auto mt-5 max-w-3xl font-display text-3xl leading-[1.08] tracking-tight sm:text-5xl">
+                  Hand {service.title.toLowerCase()} over and get your week back.
+                </h2>
+                <p className="mx-auto mt-5 max-w-lg font-sans text-sm leading-relaxed text-background/70">
+                  One call, a clear scope, and weekly updates from there. You give opinions and
+                  approvals — we do everything else.
+                </p>
+                <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+                  <a
+                    href={`https://wa.me/919511202129?text=${encodeURIComponent(
+                      `Hi Well Handled — I'd like to talk about ${service.title}.`,
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
+                  >
+                    Start on WhatsApp
+                  </a>
+                  <a
+                    href={`mailto:hello@wellhandled.co?subject=${encodeURIComponent(service.title)}`}
+                    className="inline-flex items-center justify-center border border-background/50 px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
+                  >
+                    hello@wellhandled.co
+                  </a>
+                </div>
+                <p className="mt-6 font-sans text-xs text-background/50">
+                  Weekly update &amp; feedback calls included.
+                </p>
+              </div>
             </Reveal>
+
 
             <Reveal className="mt-16">
               <Link
