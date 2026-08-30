@@ -1,3 +1,6 @@
+import { hasAnalyticsConsent, onConsentChange } from "./consent";
+import { getAttribution } from "./attribution";
+
 type Params = Record<string, string | number | boolean>;
 
 declare global {
@@ -7,10 +10,20 @@ declare global {
   }
 }
 
-/** Fire-and-forget analytics event. Works with gtag/dataLayer when present, no-ops otherwise. */
-export function trackEvent(name: string, params: Params = {}) {
-  if (typeof window === "undefined") return;
-  const payload = { ...params, page_path: window.location.pathname };
+const queue: Array<{ name: string; params: Params }> = [];
+let listening = false;
+
+function attributionParams(): Params {
+  const a = getAttribution();
+  const out: Params = {};
+  for (const [key, value] of Object.entries(a)) {
+    if (typeof value === "string" && value) out[key] = value;
+  }
+  return out;
+}
+
+function dispatch(name: string, params: Params) {
+  const payload = { ...attributionParams(), ...params, page_path: window.location.pathname };
   try {
     if (typeof window.gtag === "function") {
       window.gtag("event", name, payload);
@@ -21,6 +34,33 @@ export function trackEvent(name: string, params: Params = {}) {
   } catch {
     /* analytics must never break the UI */
   }
+}
+
+function flush() {
+  while (queue.length) {
+    const item = queue.shift();
+    if (item) dispatch(item.name, item.params);
+  }
+}
+
+/** Fire-and-forget analytics event. Only sent once the visitor opts in. */
+export function trackEvent(name: string, params: Params = {}) {
+  if (typeof window === "undefined") return;
+
+  if (!hasAnalyticsConsent()) {
+    // Hold events until (and unless) consent is granted.
+    if (queue.length < 25) queue.push({ name, params });
+    if (!listening) {
+      listening = true;
+      onConsentChange((value) => {
+        if (value === "granted") flush();
+        else queue.length = 0;
+      });
+    }
+    return;
+  }
+
+  dispatch(name, params);
 }
 
 /** Local conversion counters so per-service performance is visible even without a provider. */
