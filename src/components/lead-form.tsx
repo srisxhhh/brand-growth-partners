@@ -75,11 +75,14 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
     }
     setErrors({});
     const { name, email, notes } = parsed.data;
+    const attribution = getAttribution();
     const message = [
       `New enquiry — ${serviceTitle}`,
       `Name: ${name}`,
       `Email: ${email}`,
       notes ? `Notes: ${notes}` : "Notes: —",
+      `Page: ${typeof window !== "undefined" ? window.location.pathname : "/"}`,
+      `Campaign: ${attributionSummary(attribution)}`,
     ].join("\n");
     const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     lastLink.current = link;
