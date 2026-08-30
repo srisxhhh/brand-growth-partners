@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { serviceBySlug, services } from "@/lib/services";
 import { Reveal, RevealGroup, RisingText, fadeUp, pageTransition } from "@/components/reveal";
 import { LeadForm } from "@/components/lead-form";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
@@ -305,6 +306,7 @@ function ServicePage() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick(service.title, "service_cta")}
                     className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
                   >
                     Start on WhatsApp
