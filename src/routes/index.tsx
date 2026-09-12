@@ -12,13 +12,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Well Handled manages websites, apps, UGC ads, personal branding, video, design and Meta ads for founders. You approve, we execute.",
+          "Well Handled manages tech, UGC, personal and commercial branding, design, editing and Meta ads for founders. You approve, we execute.",
       },
       { property: "og:title", content: "Well Handled — Everything Behind Your Brand, Handled" },
       {
         property: "og:description",
         content:
-          "A management firm for businesses and ventures. Websites, apps, content, ads and founder branding — run end to end.",
+          "A management firm for businesses and ventures. Tech, creative, content and advertising — run end to end.",
       },
     ],
   }),
@@ -83,7 +83,7 @@ function Index() {
             transition={{ duration: 0.7, delay: 0.75 }}
             className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            We run the websites, apps, content, ads and founder presence for the businesses we work
+            We run the tech, content, creative, ads and founder presence for the businesses we work
             with. You stay on the business itself — and give your opinion and approval.
           </motion.p>
 
@@ -135,7 +135,7 @@ function Index() {
                   <Link
                     to="/services/$slug"
                     params={{ slug: s.slug }}
-                    className="bento-cell group flex h-full flex-col"
+                    className="bento-cell motion-card group flex h-full flex-col"
                   >
                     <div className="flex items-center justify-between">
                       <span className="eyebrow">{s.n}</span>
@@ -151,7 +151,7 @@ function Index() {
                           loading="lazy"
                           width={640}
                           height={640}
-                          className="h-full w-full object-cover grayscale transition-transform duration-500 group-hover:scale-110"
+                          className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
                         />
                       </span>
                       <h3 className="font-display text-2xl tracking-tight sm:text-3xl">
@@ -234,10 +234,10 @@ function Index() {
                 Tell us what you're building.
               </h2>
               <a
-                href="mailto:hello@wellhandled.co"
+                href="mailto:contact@wellhandled.in"
                 className="mt-10 inline-block border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
               >
-                hello@wellhandled.co
+                contact@wellhandled.in
               </a>
             </Reveal>
           </div>

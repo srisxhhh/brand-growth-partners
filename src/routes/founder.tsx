@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import srishAsset from "@/assets/srish.jpeg.asset.json";
 
 function DecisionRow() {
-  const [agreed, setAgreed] = useState(false);
   const [dodges, setDodges] = useState(0);
   const [pos, setPos] = useState({ x: 0, y: 0, opacity: 1 });
 
@@ -22,7 +21,7 @@ function DecisionRow() {
     if (next > 3) {
       setPos({ x: typeof window !== "undefined" ? window.innerWidth : 1400, y: -180, opacity: 0 });
     } else {
-      const spot = spots[next] ?? spots[0]!;
+      const spot = spots[next] ?? spots[0] ?? { x: 0, y: 0 };
       setPos({ x: spot.x, y: spot.y, opacity: 1 });
     }
   };
@@ -33,7 +32,6 @@ function DecisionRow() {
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => setAgreed(true)}
         className="inline-flex items-center justify-center bg-agree px-8 py-3.5 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
       >
         Agree
@@ -53,11 +51,6 @@ function DecisionRow() {
         Naah
       </motion.button>
 
-      {agreed ? (
-        <span className="text-sm text-muted-foreground">Good call. Let's talk.</span>
-      ) : dodges >= 4 ? (
-        <span className="text-sm text-muted-foreground">Gone. Told you it wasn't catchable.</span>
-      ) : null}
     </div>
   );
 }
@@ -126,7 +119,7 @@ function Founder() {
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="neon-frame w-full overflow-hidden bg-muted p-1.5"
+                className="neon-frame image-reveal w-full overflow-hidden bg-muted p-1.5"
               >
                 <img
                   src={srishAsset.url}
@@ -154,8 +147,8 @@ function Founder() {
                 </p>
                 <p>
                   Our model is simple: we act as the in-house execution layer for the
-                  brands we work with. Websites, apps, content, design, paid ads and
-                  founder branding — planned, produced and maintained by one team.
+                  brands we work with. Tech, UGC, design, editing, paid ads and
+                  personal and commercial branding — planned, produced and maintained by one team.
                 </p>
                 <p>
                   You stay focused on the direction and the big calls. We bring you
@@ -189,10 +182,10 @@ function Founder() {
                   WhatsApp +91 95112 02129
                 </a>
                 <a
-                  href="mailto:hello@wellhandled.co"
+                  href="mailto:contact@wellhandled.in"
                   className="inline-flex items-center justify-center border border-foreground px-7 py-3.5 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
                 >
-                  hello@wellhandled.co
+                  contact@wellhandled.in
                 </a>
               </div>
             </div>

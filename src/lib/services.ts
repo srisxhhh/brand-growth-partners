@@ -1,17 +1,11 @@
-import svcWebsites from "@/assets/svc-websites.jpg";
-import svcApps from "@/assets/svc-apps.jpg";
+import svcTech from "@/assets/svc-websites.jpg";
 import svcUgc from "@/assets/svc-ugc.jpg";
 import svcBranding from "@/assets/svc-branding.jpg";
-import svcVideo from "@/assets/svc-video.jpg";
 import svcDesign from "@/assets/svc-design.jpg";
 import svcAds from "@/assets/svc-ads.jpg";
 
 import web1 from "@/assets/steps/websites-1.jpg";
 import web2 from "@/assets/steps/websites-2.jpg";
-import web3 from "@/assets/steps/websites-3.jpg";
-import web4 from "@/assets/steps/websites-4.jpg";
-import app1 from "@/assets/steps/mobile-apps-1.jpg";
-import app2 from "@/assets/steps/mobile-apps-2.jpg";
 import app3 from "@/assets/steps/mobile-apps-3.jpg";
 import app4 from "@/assets/steps/mobile-apps-4.jpg";
 import ugc1 from "@/assets/steps/personalised-ugc-1.jpg";
@@ -24,10 +18,6 @@ import brand3 from "@/assets/steps/founder-branding-3.jpg";
 import brand4 from "@/assets/steps/founder-branding-4.jpg";
 import vid1 from "@/assets/steps/video-editing-1.jpg";
 import vid2 from "@/assets/steps/video-editing-2.jpg";
-import vid3 from "@/assets/steps/video-editing-3.jpg";
-import vid4 from "@/assets/steps/video-editing-4.jpg";
-import des1 from "@/assets/steps/graphic-design-1.jpg";
-import des2 from "@/assets/steps/graphic-design-2.jpg";
 import des3 from "@/assets/steps/graphic-design-3.jpg";
 import des4 from "@/assets/steps/graphic-design-4.jpg";
 import ads1 from "@/assets/steps/meta-ads-1.jpg";
@@ -36,9 +26,7 @@ import ads3 from "@/assets/steps/meta-ads-3.jpg";
 import ads4 from "@/assets/steps/meta-ads-4.jpg";
 
 export type FaqItem = { q: string; a: string };
-
 export type ProcessStep = { step: string; detail: string; image: string };
-
 export type Service = {
   slug: string;
   n: string;
@@ -55,467 +43,137 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: "websites",
-    image: svcWebsites,
+    slug: "tech",
+    image: svcTech,
     n: "01",
-    title: "Websites",
-    tagline: "Designed, developed, hosted, maintained.",
-    intro:
-      "Your website is the first room your customer walks into. We design it, build it, put it live and keep it that way — fast, current and never your problem.",
-    span: "md:col-span-2 md:row-span-1",
+    title: "TECH",
+    tagline: "Websites and apps, built and managed as one system.",
+    intro: "From the first browser tab to the app in your customer's hand, we design, engineer, launch, host and maintain the entire digital product. One team owns the experience across web, Android and iOS.",
+    span: "md:col-span-2",
     deliverables: [
-      "Bespoke design direction, not a template",
-      "Development with performance and SEO built in",
+      "Web strategy, UX and bespoke interface design",
+      "Website and mobile app development",
+      "Android and iOS testing and store submission",
       "Hosting, domains, SSL and uptime monitoring",
-      "Ongoing copy, page and content updates",
-      "Analytics and conversion tracking wired up",
+      "Ongoing releases, content changes and performance upkeep",
     ],
     process: [
-      {
-        step: "Direction",
-        detail:
-          "We interrogate the proposition before a single pixel is drawn — audience, objection, hierarchy, tone. What returns to you is a considered architecture and visual language, articulated well enough to approve in one sitting.",
-        image: web1,
-      },
-      {
-        step: "Build",
-        detail:
-          "Design and engineering advance in tandem, not in relay. Semantic markup, deliberate performance budgets and search fundamentals are written in from the first commit rather than retrofitted at the end.",
-        image: web2,
-      },
-      {
-        step: "Launch",
-        detail:
-          "Migration, DNS, certificates, redirects and analytics are orchestrated quietly on our side. You receive a link and a working site, not a checklist and a deadline.",
-        image: web3,
-      },
-      {
-        step: "Maintain",
-        detail:
-          "Uptime, speed and content stay under continuous supervision. Fixes, refinements and new pages ship on a standing rhythm — no briefs, no invoices for every small ask.",
-        image: web4,
-      },
+      { step: "Architect", detail: "We interrogate the proposition, user journeys and commercial priorities before a single screen is composed. The result is a coherent product architecture built around what customers need to do, not a collection of fashionable features.", image: web1 },
+      { step: "Design", detail: "Web and mobile interfaces are resolved as one visual system, with every state, breakpoint and interaction considered. You approve an experience that already feels tangible rather than trying to imagine it from skeletal wireframes.", image: web2 },
+      { step: "Engineer", detail: "Performance, accessibility, analytics and search fundamentals are built into the product from the beginning. The same engineering discipline follows every screen across browsers, Android and iOS.", image: app3 },
+      { step: "Operate", detail: "We orchestrate hosting, domains, certificates, store submissions and releases without handing you an operational checklist. After launch, monitoring and regular improvements keep the whole system fast, secure and current.", image: app4 },
     ],
-    outcome: "A site that stays fast, accurate and online — permanently.",
+    outcome: "One digital system that launches cleanly and stays healthy without becoming your second job.",
     faq: [
-      {
-        q: "How long does a website take?",
-        a:
-          "Most builds go live in three to five weeks, depending on page count and how quickly approvals come back. You'll see the design direction inside the first week.",
-      },
-      {
-        q: "Is hosting and maintenance included?",
-        a:
-          "Yes. Hosting, domains, SSL, uptime monitoring and ongoing content updates are all handled by us \u2014 there is no separate vendor to chase.",
-      },
-      {
-        q: "Can you update copy or pages after launch?",
-        a:
-          "Send a message and it's done. Routine copy, page and image changes ship on a standing rhythm without a new brief or invoice each time.",
-      },
-      {
-        q: "Will it work well on phones?",
-        a:
-          "Every build is designed mobile-first and tested across Android and iOS, so it feels the same on a phone as it does on a laptop.",
-      },
-    ],
-  },
-  {
-    slug: "mobile-apps",
-    image: svcApps,
-    n: "02",
-    title: "Mobile Apps",
-    tagline: "Android and iOS, end to end.",
-    intro:
-      "From first screen to store listing to the update three months from now. We handle builds, releases and upkeep on both platforms the same way we handle your site.",
-    span: "",
-    deliverables: [
-      "Product and interface design for iOS and Android",
-      "Development, testing and store submission",
-      "Release management and version updates",
-      "Crash monitoring and performance upkeep",
-      "Store listing copy and creative",
-    ],
-    process: [
-      {
-        step: "Scope",
-        detail:
-          "We reduce the ambition to the version that genuinely earns its keep. Every feature is weighed against effort and adoption, so the first release is deliberate rather than diluted.",
-        image: app1,
-      },
-      {
-        step: "Design",
-        detail:
-          "Screens arrive resolved — states, edge cases and gestures accounted for on both platforms. You review finished interface work, not wireframe homework that needs imagination to read.",
-        image: app2,
-      },
-      {
-        step: "Ship",
-        detail:
-          "Builds, provisioning, review submissions and store assets are handled entirely by us. We absorb the bureaucracy of Apple and Google so your launch date holds.",
-        image: app3,
-      },
-      {
-        step: "Iterate",
-        detail:
-          "Crash traces, retention and usage inform a standing update cadence. Improvements land on schedule and are reported in plain language every week.",
-        image: app4,
-      },
-    ],
-    outcome: "An app that ships, updates and stays healthy without you managing it.",
-    faq: [
-      {
-        q: "Do you build for both Android and iOS?",
-        a:
-          "Yes. One codebase ships to both stores, so features and fixes land on Android and iOS at the same time.",
-      },
-      {
-        q: "Do you handle the App Store and Play Store submissions?",
-        a:
-          "We handle store listings, review responses, screenshots and release management end to end. You only approve the final build.",
-      },
-      {
-        q: "What happens after launch?",
-        a:
-          "We monitor crashes, performance and reviews, then ship updates on a regular cadence as part of the retainer.",
-      },
-      {
-        q: "Can you take over an existing app?",
-        a:
-          "Usually yes. We audit the current codebase first and tell you honestly whether to continue it or rebuild.",
-      },
+      { q: "Can you handle both our website and mobile app?", a: "Yes. TECH combines both under one product team, so identity, data, releases and customer journeys remain consistent across every screen." },
+      { q: "Do you manage hosting and app-store releases?", a: "Yes. Hosting, domains, certificates, Apple and Google submissions, review responses and release management are handled end to end." },
+      { q: "Can you take over an existing product?", a: "Usually. We first audit the current design, code and infrastructure, then recommend whether to improve, restructure or rebuild it." },
+      { q: "What happens after launch?", a: "We monitor performance, crashes and uptime, ship updates, and cover progress in your weekly update and feedback call." },
     ],
   },
   {
     slug: "personalised-ugc",
     image: svcUgc,
-    n: "03",
+    n: "02",
     title: "Personalised UGC",
-    tagline: "Creator-style footage built to perform.",
-    intro:
-      "Ads that don't look like ads. We produce creator-style footage around your actual product, shaped for the platforms and tested against real spend.",
+    tagline: "Creator-led advertising shaped around your actual customer.",
+    intro: "We turn the right commercial angle into credible creator content, then manage every handoff from brief to approved final cut. You review the decisions; we handle the production machinery.",
     span: "",
-    deliverables: [
-      "Creator casting matched to your audience",
-      "Scripting and hook variations per concept",
-      "Full production and post, platform-native",
-      "Multiple cuts and aspect ratios per shoot",
-      "Performance read-back on what won",
-    ],
+    deliverables: ["Campaign brief and performance angles", "Creator discovery, screening and coordination", "Scripts, hooks and platform-native variations", "Raw-footage editing and multiple aspect ratios", "Final approval workflow and organised delivery"],
     process: [
-      {
-        step: "Angle",
-        detail:
-          "We isolate the claims, frictions and hooks worth spending money against. Each concept is written to a specific objection, so the test proves something instead of merely producing content.",
-        image: ugc1,
-      },
-      {
-        step: "Produce",
-        detail:
-          "Casting, scripting, shoot logistics and post are organised end to end by us. Creators are matched to your audience rather than to whoever is available.",
-        image: ugc2,
-      },
-      {
-        step: "Test",
-        detail:
-          "Variants go live in disciplined cohorts and are judged on cost per outcome, not on taste. Hooks, openings and formats are isolated so the winner is attributable.",
-        image: ugc3,
-      },
-      {
-        step: "Scale",
-        detail:
-          "Proven concepts are iterated into families of assets while fatigued ones retire quietly. Production volume is tied to what the numbers justify.",
-        image: ugc4,
-      },
+      { step: "Taking the brief", detail: "We excavate the real commercial objective, audience tension and product proof behind the request. The brief becomes a decisive creative mandate rather than a loose collection of references.", image: ugc1 },
+      { step: "Finding creators", detail: "Creators are sourced for audience resonance, delivery and category credibility—not follower count alone. We shortlist, negotiate and coordinate the right voices while you retain final visibility.", image: ugc2 },
+      { step: "Confirming the script", detail: "Hooks, claims and narrative beats are refined into scripts that sound native in a creator's voice. Nothing enters production until the message, compliance and performance intent are aligned.", image: ugc3 },
+      { step: "Editing the raw files", detail: "Raw footage becomes deliberate, high-retention advertising through pacing, captions, sound and visual emphasis. Multiple openings and formats create genuinely useful testing variables.", image: ugc4 },
+      { step: "Final approval", detail: "Polished cuts arrive organised by concept, platform and ratio for one focused review. Your final opinion is applied precisely, then every approved asset is packaged for immediate launch.", image: svcUgc },
     ],
-    outcome: "A steady supply of creative that keeps acquisition costs honest.",
+    outcome: "A repeatable creator pipeline that produces credible ads without consuming your calendar.",
     faq: [
-      {
-        q: "Do you provide the creators?",
-        a:
-          "Yes. We cast, brief and direct creators who fit your category, so you never source or negotiate talent yourself.",
-      },
-      {
-        q: "How many ad creatives do we get each month?",
-        a:
-          "Volume is set to your spend, but most brands run a steady batch of fresh hooks and edits every month so testing never stalls.",
-      },
-      {
-        q: "Do you also run the ads?",
-        a:
-          "We can. Creative and Meta ads work together well, and most clients pair them so learnings feed straight back into the next batch.",
-      },
-      {
-        q: "Who owns the footage?",
-        a:
-          "You do. All raw footage and finished cuts are yours to reuse across any channel.",
-      },
+      { q: "Do you find and manage the creators?", a: "Yes. We source, screen, brief, negotiate with and coordinate creators suited to your audience and category." },
+      { q: "Do we approve scripts before filming?", a: "Always. Scripts and hooks are confirmed with you before production, and final edits return for approval before launch." },
+      { q: "Who owns the footage?", a: "You do. Approved cuts and the agreed raw footage are organised for your future use across channels." },
+      { q: "Can you produce multiple ad variations?", a: "Yes. We create structured hook, opening and format variations so media testing can reveal what actually performs." },
     ],
   },
   {
-    slug: "founder-branding",
+    slug: "personal-commercial-branding",
     image: svcBranding,
-    n: "04",
-    title: "Founder Branding",
-    tagline: "Your story, told the way it happened.",
-    intro:
-      "People buy from people. We build a founder presence that reads genuine because it is — your real story, structured, filmed and published consistently.",
+    n: "03",
+    title: "Personal & Commercial Branding",
+    tagline: "Scroll-stopping ideas before production starts.",
+    intro: "The biggest value is not simply producing more content. It is knowing what should be created in the first place. We develop the positioning, concepts and ads that make both founders and businesses impossible to scroll past.",
     span: "md:col-span-2",
-    deliverables: [
-      "Narrative and positioning built from interviews",
-      "Content pillars and a publishing calendar",
-      "Filming days and repurposing into short form",
-      "Profile design across LinkedIn, Instagram and X",
-      "Ghost-drafted posts in your own voice for approval",
-    ],
+    deliverables: ["Founder and commercial positioning", "Scroll-stopping campaign concepts and ad angles", "Narrative systems grounded in real stories", "Content pillars, scripts and publishing direction", "Campaign, social and identity applications"],
     process: [
-      {
-        step: "Listen",
-        detail:
-          "We interview you at length before a line is written — the decisions, the failures, the convictions. The material is yours; our work is to find the parts worth repeating.",
-        image: brand1,
-      },
-      {
-        step: "Shape",
-        detail:
-          "That raw history is distilled into a handful of durable narratives and content pillars. Everything published afterwards is a variation on themes you already believe.",
-        image: brand2,
-      },
-      {
-        step: "Publish",
-        detail:
-          "Drafting, filming, scheduling and posting run on a calendar we maintain. You approve in batches; nothing goes out in a voice that isn't recognisably yours.",
-        image: brand3,
-      },
-      {
-        step: "Compound",
-        detail:
-          "Consistency does the heavy lifting. The presence accumulates reach, inbound conversations and credibility while your attention stays on the business.",
-        image: brand4,
-      },
+      { step: "Discover", detail: "We listen for the convictions, customer truths and overlooked tensions that competitors cannot credibly imitate. This gives the brand an intellectual territory of its own before visual production begins.", image: brand1 },
+      { step: "Position", detail: "Personal credibility and commercial ambition are distilled into a precise narrative system. Every idea can then reinforce the same memorable point of view without becoming repetitive.", image: brand2 },
+      { step: "Concept", detail: "We devise arresting ads, formats and story angles engineered to interrupt passive scrolling. The objective is not decoration; it is earning attention with an idea strong enough to deserve it.", image: brand3 },
+      { step: "Activate", detail: "Approved concepts become campaigns, founder content and repeatable brand assets across the right channels. We manage the production cadence while performance and audience response sharpen what comes next.", image: brand4 },
     ],
-    outcome: "A public presence that sounds like you and opens doors on its own.",
+    outcome: "A brand that knows what to say, why it matters and how to stop the scroll.",
     faq: [
-      {
-        q: "Do I have to write the posts myself?",
-        a:
-          "No. We shape your point of view through short interviews, then write and schedule everything. You approve before anything goes live.",
-      },
-      {
-        q: "Will it still sound like me?",
-        a:
-          "That's the whole point. Voice is built from your own words and reviewed with you until posts read as though you typed them.",
-      },
-      {
-        q: "Which platforms do you cover?",
-        a:
-          "Usually LinkedIn and Instagram, with X or YouTube added when your audience actually lives there.",
-      },
-      {
-        q: "How much of my time does this take?",
-        a:
-          "Roughly an hour a fortnight for a recorded conversation, plus quick approvals.",
-      },
+      { q: "Is this only for founder-led content?", a: "No. We connect the founder's credibility with the commercial brand, then create distinct formats for each where that separation is useful." },
+      { q: "Do you make the ads as well as the strategy?", a: "Yes. We originate the positioning and concepts, then carry approved ideas through scripting, design, editing and delivery." },
+      { q: "Will the founder content still feel genuine?", a: "Yes. The voice comes from interviews and your real decisions, language and experiences—not borrowed internet opinions." },
+      { q: "Which channels do you cover?", a: "We select channels around the audience and objective, commonly spanning Instagram, LinkedIn, Meta campaigns, YouTube and X." },
     ],
   },
   {
-    slug: "video-editing",
-    image: svcVideo,
-    n: "05",
-    title: "Video Editing",
-    tagline: "Ads, reels, long-form — on schedule.",
-    intro:
-      "Cut, graded, captioned and delivered when we said it would be. One editing pipeline for everything your brand puts out.",
-    span: "",
-    deliverables: [
-      "Performance ad edits with hook variants",
-      "Short-form reels and clips from long footage",
-      "Long-form edits with grading and sound",
-      "Captions, motion graphics and end cards",
-      "Organised asset library you actually own",
-    ],
-    process: [
-      {
-        step: "Intake",
-        detail:
-          "Footage, audio and references are ingested, catalogued and backed up on our side. Nothing lingers half-organised in your drive waiting for a decision.",
-        image: vid1,
-      },
-      {
-        step: "Edit",
-        detail:
-          "The first cut arrives close to final — pacing, sound design, grade and captions already considered. You react to a finished argument, not a rough assembly.",
-        image: vid2,
-      },
-      {
-        step: "Notes",
-        detail:
-          "One consolidated round of your opinions, applied precisely and without negotiation. Ambiguity is resolved by us before it becomes another revision cycle.",
-        image: vid3,
-      },
-      {
-        step: "Deliver",
-        detail:
-          "Every ratio, platform spec and thumbnail is exported, named and filed into a library you own outright. Retrieval takes seconds, not a message to us.",
-        image: vid4,
-      },
-    ],
-    outcome: "Video that lands on time, every week, without chasing.",
-    faq: [
-      {
-        q: "What turnaround can we expect?",
-        a:
-          "Standard edits return within two to three working days, with same-week turnaround on priority cuts.",
-      },
-      {
-        q: "Do you handle subtitles and formats?",
-        a:
-          "Yes. Every video is delivered in the aspect ratios and caption styles each platform needs.",
-      },
-      {
-        q: "How do we send footage?",
-        a:
-          "Drop raw files into a shared folder. We take it from there \u2014 no naming conventions or file wrangling required.",
-      },
-      {
-        q: "How many revisions are included?",
-        a:
-          "Revisions are unlimited within the agreed direction; we'd rather get it right than count rounds.",
-      },
-    ],
-  },
-  {
-    slug: "graphic-design",
+    slug: "design-editing",
     image: svcDesign,
-    n: "06",
-    title: "Graphic Design",
-    tagline: "Systems, not one-off files.",
-    intro:
-      "Identity, campaign and social design that holds together everywhere it appears — because it's built as a system with rules, not as separate artwork.",
+    n: "04",
+    title: "DESIGN & EDITING",
+    tagline: "Every frame and format, held to one visual standard.",
+    intro: "Graphic design and video editing belong in the same visual system. We turn campaigns, raw footage and daily requests into a consistent stream of polished work built for the channel where it will live.",
     span: "",
-    deliverables: [
-      "Identity work: marks, type and colour systems",
-      "Campaign key visuals and adaptations",
-      "Social templates for repeatable output",
-      "Packaging, decks and print collateral",
-      "Brand guidelines your future team can follow",
-    ],
+    deliverables: ["Campaign and social graphic design", "Performance ad and short-form video edits", "Long-form editing, grading, sound and captions", "Templates, decks, print and motion graphics", "Organised source files and brand asset library"],
     process: [
-      {
-        step: "Audit",
-        detail:
-          "We examine everything currently in circulation before proposing replacements. Equity worth keeping is identified; incoherence is documented rather than assumed.",
-        image: des1,
-      },
-      {
-        step: "Direction",
-        detail:
-          "Two fully resolved routes, each defensible on its own terms — not twelve mood boards demanding your interpretation. You choose a direction, not a homework assignment.",
-        image: des2,
-      },
-      {
-        step: "Systemise",
-        detail:
-          "The chosen route becomes grids, type scales, colour rules and templates. Consistency stops depending on whoever happens to open the file next.",
-        image: des3,
-      },
-      {
-        step: "Apply",
-        detail:
-          "Every subsequent asset — campaign, packaging, deck, social — is produced inside that system. The brand looks deliberate at volume and at speed.",
-        image: des4,
-      },
+      { step: "Ingest", detail: "Raw footage, brand files, references and campaign requirements are catalogued into one dependable production system. Nothing remains stranded in a drive waiting for somebody to make sense of it.", image: vid1 },
+      { step: "Direct", detail: "We establish the visual hierarchy, pacing and format logic before production expands. This keeps a deck, reel, ad and campaign key visual recognisably part of the same brand.", image: vid2 },
+      { step: "Craft", detail: "Editing and design advance together through typography, composition, sound, grade and motion. Each asset is finished for its actual context rather than mechanically resized at the end.", image: des3 },
+      { step: "Deliver", detail: "Approved work is exported to every required ratio and specification, then named and filed into an asset library you own. Retrieval and reuse stay effortless as output grows.", image: des4 },
     ],
-    outcome: "A brand that looks deliberate on every surface it touches.",
+    outcome: "A continuous creative output that looks considered, coherent and ready to publish.",
     faq: [
-      {
-        q: "Do you work from an existing brand?",
-        a:
-          "Yes. We can extend the identity you already have, or rebuild the system if it's holding you back.",
-      },
-      {
-        q: "What kind of assets do you cover?",
-        a:
-          "Ad creative, decks, packaging, social templates, print and anything else the brand touches.",
-      },
-      {
-        q: "How fast are day-to-day requests?",
-        a:
-          "Most single-asset requests come back within 48 hours through a standing request queue.",
-      },
-      {
-        q: "Do we get editable source files?",
-        a:
-          "Always. Source files and a documented brand system are handed over and kept current.",
-      },
+      { q: "What types of design and editing do you cover?", a: "We cover ads, social content, reels, long-form video, decks, campaign visuals, packaging, print and the supporting templates around them." },
+      { q: "Can you work within our existing brand?", a: "Yes. We can extend a strong existing system or tighten it first when inconsistency is slowing production down." },
+      { q: "What turnaround can we expect?", a: "Most focused day-to-day requests return within two to three working days, with larger campaigns scheduled transparently." },
+      { q: "Do we receive editable source files?", a: "Always. Final exports and organised working files remain yours and are kept current throughout the engagement." },
     ],
   },
   {
     slug: "meta-ads",
     image: svcAds,
-    n: "07",
+    n: "05",
     title: "Meta Ads",
-    tagline: "Structure, testing and spend, managed.",
-    intro:
-      "Account structure, creative testing and budget managed against your numbers — not vanity metrics. You see what it costs and what it returned.",
+    tagline: "Structure, creative testing and spend, managed.",
+    intro: "We manage account architecture, creative testing and budget against commercial outcomes—not vanity metrics. You see what was spent, what it returned and what we are changing next.",
     span: "",
-    deliverables: [
-      "Account and campaign structure built properly",
-      "Pixel, events and conversion tracking checked",
-      "Creative testing cadence tied to production",
-      "Audience, placement and budget management",
-      "Weekly reporting in plain numbers",
-    ],
+    deliverables: ["Account and campaign structure", "Pixel, events and conversion tracking", "Creative testing cadence tied to production", "Audience, placement and budget management", "Weekly reporting in plain numbers"],
     process: [
-      {
-        step: "Diagnose",
-        detail:
-          "Pixel integrity, event mapping and account architecture are audited before budget moves. Scaling on broken measurement is expensive guesswork, so we fix the foundation first.",
-        image: ads1,
-      },
-      {
-        step: "Test",
-        detail:
-          "Creative, audiences and placements are examined in a deliberate sequence with one variable at a time. Conclusions are statistical, not anecdotal.",
-        image: ads2,
-      },
-      {
-        step: "Scale",
-        detail:
-          "Budget migrates steadily toward what has demonstrably proven itself. Increases are paced so learning phases aren't reset and efficiency isn't sacrificed for volume.",
-        image: ads3,
-      },
-      {
-        step: "Report",
-        detail:
-          "Spend, cost per acquisition and return are reviewed with you weekly in plain figures. You always know what the account cost and what it produced.",
-        image: ads4,
-      },
+      { step: "Diagnose", detail: "Pixel integrity, event mapping and account architecture are audited before budget moves. Scaling on broken measurement is expensive guesswork, so we correct the foundation first.", image: ads1 },
+      { step: "Test", detail: "Creative, audiences and placements are examined in a deliberate sequence with controlled variables. Conclusions come from attributable signal rather than instinct dressed up as strategy.", image: ads2 },
+      { step: "Scale", detail: "Budget migrates steadily toward what has demonstrably proven itself. Increases are paced to preserve learning and protect efficiency as volume grows.", image: ads3 },
+      { step: "Report", detail: "Spend, acquisition cost and return are reviewed with you every week in plain figures. You always know what changed, what it cost and what happens next.", image: ads4 },
     ],
     outcome: "Spend you can explain, with a cost per customer you can plan around.",
     faq: [
-      {
-        q: "What ad spend do you work with?",
-        a:
-          "We work best with brands spending consistently each month, and we'll tell you upfront if spend is too thin for testing to be meaningful.",
-      },
-      {
-        q: "Do you make the creative too?",
-        a:
-          "Yes. Creative, UGC and media buying sit under one roof, which is why testing moves faster.",
-      },
-      {
-        q: "How is performance reported?",
-        a:
-          "A weekly call plus a plain-English report covering spend, cost per outcome and what changes next.",
-      },
-      {
-        q: "How soon do results show?",
-        a:
-          "Early signal usually appears within two weeks; stable, planable cost per customer typically takes four to six.",
-      },
+      { q: "What ad spend do you work with?", a: "We work best with brands spending consistently each month, and will say plainly when a budget is too thin for meaningful testing." },
+      { q: "Do you make the creative too?", a: "Yes. UGC, branding, design and editing sit alongside media buying, allowing account learnings to shape the next creative quickly." },
+      { q: "How is performance reported?", a: "A weekly call and concise report cover spend, cost per outcome, creative findings and the decisions being made next." },
+      { q: "How soon do results show?", a: "Early signal often appears within two weeks, while stable and planable acquisition performance usually needs a longer testing window." },
     ],
   },
 ];
 
-export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
+const legacySlugs: Record<string, string> = {
+  websites: "tech",
+  "mobile-apps": "tech",
+  "founder-branding": "personal-commercial-branding",
+  "video-editing": "design-editing",
+  "graphic-design": "design-editing",
+};
+
+export const canonicalServiceSlug = (slug: string) => legacySlugs[slug] ?? slug;
+export const serviceBySlug = (slug: string) =>
+  services.find((service) => service.slug === canonicalServiceSlug(slug));

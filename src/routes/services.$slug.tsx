@@ -1,12 +1,16 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { serviceBySlug, services } from "@/lib/services";
+import { canonicalServiceSlug, serviceBySlug, services } from "@/lib/services";
 import { Reveal, RevealGroup, RisingText, fadeUp, pageTransition } from "@/components/reveal";
 import { LeadForm } from "@/components/lead-form";
 import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
+    const canonicalSlug = canonicalServiceSlug(params.slug);
+    if (canonicalSlug !== params.slug) {
+      throw redirect({ to: "/services/$slug", params: { slug: canonicalSlug } });
+    }
     const service = serviceBySlug(params.slug);
     if (!service) throw notFound();
     return { service };
@@ -214,7 +218,7 @@ function ServicePage() {
 
             <RevealGroup className="mt-10 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2">
               {service.process.map((p, i) => (
-                <motion.article key={p.step} variants={fadeUp} className="bento-cell group">
+                <motion.article key={p.step} variants={fadeUp} className="bento-cell motion-card group overflow-hidden">
                   <div className="flex items-start gap-5">
                     <span className="block h-20 w-20 shrink-0 overflow-hidden border border-border sm:h-24 sm:w-24">
                       <img
@@ -223,7 +227,7 @@ function ServicePage() {
                         loading="lazy"
                         width={640}
                         height={640}
-                        className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-cover grayscale transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0"
                       />
                     </span>
                     <div>
@@ -312,10 +316,10 @@ function ServicePage() {
                     Start on WhatsApp
                   </a>
                   <a
-                    href={`mailto:hello@wellhandled.co?subject=${encodeURIComponent(service.title)}`}
+                    href={`mailto:contact@wellhandled.in?subject=${encodeURIComponent(service.title)}`}
                     className="inline-flex items-center justify-center border border-background/50 px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
                   >
-                    hello@wellhandled.co
+                    contact@wellhandled.in
                   </a>
                 </div>
                 <p className="mt-6 font-sans text-xs text-background/50">
