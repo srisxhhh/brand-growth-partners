@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Well Handled runs your brand's websites, apps, content and ads end to end. You give opinions and approvals — we handle the rest.",
+          "Well Handled runs your brand's tech, content, creative and ads end to end. You give opinions and approvals — we handle the rest.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
