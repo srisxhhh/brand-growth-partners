@@ -20,6 +20,8 @@ export const Route = createFileRoute("/")({
         content:
           "A management firm for businesses and ventures. Tech, creative, content and advertising — run end to end.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -103,7 +105,7 @@ function Index() {
 
           <div
             ref={imgWrap}
-            className="mt-14 overflow-hidden border border-border sm:mt-20"
+            className="image-reveal mt-14 overflow-hidden border border-border sm:mt-20"
           >
             <motion.img
               src={heroDesk}

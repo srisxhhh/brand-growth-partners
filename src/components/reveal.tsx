@@ -1,4 +1,4 @@
-import { motion, type Variants } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 
 const easing = [0.22, 1, 0.36, 1] as const;
@@ -22,10 +22,12 @@ export function Reveal({
   className?: string;
   delay?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className={className}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       variants={{
@@ -45,10 +47,12 @@ export function RevealGroup({
   children: ReactNode;
   className?: string;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className={className}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
       variants={stagger}
@@ -68,10 +72,12 @@ export function RisingText({
   className?: string;
   delay?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.span
       className={className}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       animate="visible"
       variants={{ visible: { transition: { staggerChildren: 0.06, delayChildren: delay } } }}
       aria-label={text}
@@ -95,6 +101,6 @@ export function RisingText({
 }
 
 export const pageTransition = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.55, ease: easing } },
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.9, ease: easing } },
 };
