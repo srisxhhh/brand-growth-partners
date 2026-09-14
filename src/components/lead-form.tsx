@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
-import { motion } from "motion/react";
 import { z } from "zod";
 import { checkRateLimit, recordSubmission, MIN_FILL_MS } from "@/lib/anti-spam";
 import { trackLeadSubmit, trackSpamBlocked, trackWhatsAppClick } from "@/lib/analytics";
 import { attributionSummary, getAttribution } from "@/lib/attribution";
-
-const WHATSAPP_NUMBER = "919511202129";
+import { supabase } from "@/integrations/supabase/client";
+import { whatsappLink } from "@/lib/site";
 
 const leadSchema = z.object({
   name: z.string().trim().min(1, { message: "Please add your name" }).max(100, {
@@ -49,7 +48,6 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
       return;
     }
 
-    // Too fast to be human.
     if (Date.now() - mountedAt.current < MIN_FILL_MS) {
       trackSpamBlocked(serviceTitle, "too_fast");
       setBlocked("That was quick — take a second and send it again.");
@@ -76,36 +74,44 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
     setErrors({});
     const { name, email, notes } = parsed.data;
     const attribution = getAttribution();
+    const page = typeof window !== "undefined" ? window.location.pathname : "/";
+    const campaign = attributionSummary(attribution);
     const message = [
       `New enquiry — ${serviceTitle}`,
       `Name: ${name}`,
       `Email: ${email}`,
       notes ? `Notes: ${notes}` : "Notes: —",
-      `Page: ${typeof window !== "undefined" ? window.location.pathname : "/"}`,
-      `Campaign: ${attributionSummary(attribution)}`,
+      `Page: ${page}`,
+      `Campaign: ${campaign}`,
     ].join("\n");
-    const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const link = whatsappLink(message);
     lastLink.current = link;
 
     recordSubmission();
     trackLeadSubmit(serviceTitle);
     trackWhatsAppClick(serviceTitle, "lead_form");
 
+    // Save the lead so it shows up in the dashboard, even if WhatsApp never opens.
+    void supabase.from("leads").insert({
+      service: serviceTitle,
+      name,
+      email,
+      notes: notes || null,
+      page,
+      campaign,
+      whatsapp_clicked_at: new Date().toISOString(),
+    });
+
     window.open(link, "_blank", "noopener,noreferrer");
     setSent(true);
   };
 
   const field =
-    "mt-2 w-full border border-border bg-background px-4 py-3 font-sans text-sm outline-none transition-colors focus:border-foreground";
+    "mt-2 w-full border border-border bg-background px-4 py-3 font-sans text-sm outline-none focus:border-foreground";
 
   if (sent) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="border border-border bg-card p-7 text-center sm:p-12"
-      >
+      <div className="fade-in border border-border bg-card p-7 text-center sm:p-12">
         <span className="eyebrow">Enquiry sent</span>
         <h3 className="mt-4 font-display text-3xl font-medium italic tracking-tight sm:text-4xl">
           Thank you — it's with us now.
@@ -121,7 +127,7 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick(serviceTitle, "thank_you_reopen")}
-              className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground"
             >
               Open WhatsApp again
             </a>
@@ -134,25 +140,17 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
               mountedAt.current = Date.now();
               setSent(false);
             }}
-            className="inline-flex items-center justify-center border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex items-center justify-center border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] hover:bg-foreground hover:text-background"
           >
             Send another brief
           </button>
         </div>
-      </motion.div>
+      </div>
     );
   }
 
   return (
-    <motion.form
-      onSubmit={onSubmit}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="border border-border bg-card p-7 sm:p-10"
-      noValidate
-    >
+    <form onSubmit={onSubmit} className="border border-border bg-card p-7 sm:p-10" noValidate>
       <span className="eyebrow">Tell us what you need</span>
       <h3 className="mt-3 font-display text-3xl font-medium italic tracking-tight sm:text-4xl">
         Send a brief for {serviceTitle}
@@ -228,7 +226,7 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground transition-transform duration-300 hover:-translate-y-0.5"
+          className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground"
         >
           Send to WhatsApp
         </button>
@@ -238,6 +236,6 @@ export function LeadForm({ serviceTitle }: { serviceTitle: string }) {
           </span>
         ) : null}
       </div>
-    </motion.form>
+    </form>
   );
 }
