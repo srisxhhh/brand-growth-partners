@@ -1,5 +1,16 @@
 import type { ReactNode } from "react";
 
+/** Kept for compatibility with pages that still pass motion variants. */
+export const fadeUp = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.4 } },
+};
+
+export const pageTransition = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.4 } },
+};
+
 /**
  * Lightweight presentation helpers. Heavy scroll/parallax motion was removed
  * for performance; these now render a single, cheap CSS fade.
