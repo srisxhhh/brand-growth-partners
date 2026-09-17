@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Well Handled manages tech, UGC, personal and commercial branding, design, editing and Meta ads for founders. You approve, we execute.",
+          "Well Handled manages tech, UGC, branding, design, editing, Meta ads and AI automation for founders. You approve, we execute.",
       },
       { property: "og:title", content: "Well Handled — Everything Behind Your Brand, Handled" },
       {
@@ -85,7 +85,7 @@ function Index() {
             transition={{ duration: 0.7, delay: 0.75 }}
             className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            We run the tech, content, creative, ads and founder presence for the businesses we work
+            We run the tech, content, creative, ads, automation and founder presence for the businesses we work
             with. You stay on the business itself — and give your opinion and approval.
           </motion.p>
 

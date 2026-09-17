@@ -105,7 +105,7 @@ function Dashboard() {
               <table className="w-full border-collapse text-left font-sans text-sm">
                 <thead className="bg-secondary">
                   <tr>
-                    {["Service", "Name", "Email", "Notes", "WhatsApp opened"].map((h) => (
+                    {["Service", "Name", "Contact", "Brief", "WhatsApp opened"].map((h) => (
                       <th key={h} className="whitespace-nowrap px-4 py-3 text-xs uppercase tracking-[0.16em]">
                         {h}
                       </th>
@@ -117,12 +117,8 @@ function Dashboard() {
                     <tr key={lead.id} className="border-t border-border align-top">
                       <td className="px-4 py-3">{lead.service}</td>
                       <td className="px-4 py-3">{lead.name}</td>
-                      <td className="px-4 py-3">
-                        <a href={`mailto:${lead.email}`} className="underline">
-                          {lead.email}
-                        </a>
-                      </td>
-                      <td className="max-w-xs px-4 py-3 text-muted-foreground">{lead.notes || "—"}</td>
+                      <td className="px-4 py-3">{lead.email}</td>
+                      <td className="max-w-xs whitespace-pre-line px-4 py-3 text-muted-foreground">{lead.notes || "—"}</td>
                       <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
                         {formatDate(lead.whatsapp_clicked_at ?? lead.created_at)}
                       </td>
@@ -138,10 +134,8 @@ function Dashboard() {
                 <article key={lead.id} className="border border-border bg-card p-5">
                   <span className="eyebrow">{lead.service}</span>
                   <h2 className="mt-2 font-display text-2xl tracking-tight">{lead.name}</h2>
-                  <a href={`mailto:${lead.email}`} className="mt-1 block font-sans text-sm underline">
-                    {lead.email}
-                  </a>
-                  <p className="mt-3 font-sans text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 font-sans text-sm">{lead.email}</p>
+                  <p className="mt-3 whitespace-pre-line font-sans text-sm leading-relaxed text-muted-foreground">
                     {lead.notes || "No notes"}
                   </p>
                   <p className="mt-3 font-sans text-xs text-muted-foreground">

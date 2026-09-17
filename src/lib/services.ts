@@ -3,6 +3,7 @@ import svcUgc from "@/assets/svc-ugc.jpg";
 import svcBranding from "@/assets/svc-branding.jpg";
 import svcDesign from "@/assets/svc-design.jpg";
 import svcAds from "@/assets/svc-ads.jpg";
+import svcAutomation from "@/assets/svc-ai-automation.jpg";
 
 import web1 from "@/assets/steps/websites-1.jpg";
 import web2 from "@/assets/steps/websites-2.jpg";
@@ -24,6 +25,10 @@ import ads1 from "@/assets/steps/meta-ads-1.jpg";
 import ads2 from "@/assets/steps/meta-ads-2.jpg";
 import ads3 from "@/assets/steps/meta-ads-3.jpg";
 import ads4 from "@/assets/steps/meta-ads-4.jpg";
+import automation1 from "@/assets/steps/ai-automation-1.jpg";
+import automation2 from "@/assets/steps/ai-automation-2.jpg";
+import automation3 from "@/assets/steps/ai-automation-3.jpg";
+import automation4 from "@/assets/steps/ai-automation-4.jpg";
 
 export type FaqItem = { q: string; a: string };
 export type ProcessStep = { step: string; detail: string; image: string };
@@ -46,7 +51,7 @@ export const services: Service[] = [
     slug: "tech",
     image: svcTech,
     n: "01",
-    title: "TECH",
+    title: "Tech",
     tagline: "Websites and apps, built and managed as one system.",
     intro: "From the first browser tab to the app in your customer's hand, we design, engineer, launch, host and maintain the entire digital product. One team owns the experience across web, Android and iOS.",
     span: "md:col-span-2",
@@ -65,7 +70,7 @@ export const services: Service[] = [
     ],
     outcome: "One digital system that launches cleanly and stays healthy without becoming your second job.",
     faq: [
-      { q: "Can you handle both our website and mobile app?", a: "Yes. TECH combines both under one product team, so identity, data, releases and customer journeys remain consistent across every screen." },
+      { q: "Can you handle both our website and mobile app?", a: "Yes. Tech combines both under one product team, so identity, data, releases and customer journeys remain consistent across every screen." },
       { q: "Do you manage hosting and app-store releases?", a: "Yes. Hosting, domains, certificates, Apple and Google submissions, review responses and release management are handled end to end." },
       { q: "Can you take over an existing product?", a: "Usually. We first audit the current design, code and infrastructure, then recommend whether to improve, restructure or rebuild it." },
       { q: "What happens after launch?", a: "We monitor performance, crashes and uptime, ship updates, and cover progress in your weekly update and feedback call." },
@@ -122,7 +127,7 @@ export const services: Service[] = [
     slug: "design-editing",
     image: svcDesign,
     n: "04",
-    title: "DESIGN & EDITING",
+    title: "Design & Editing",
     tagline: "Every frame and format, held to one visual standard.",
     intro: "Graphic design and video editing belong in the same visual system. We turn campaigns, raw footage and daily requests into a consistent stream of polished work built for the channel where it will live.",
     span: "",
@@ -162,6 +167,35 @@ export const services: Service[] = [
       { q: "Do you make the creative too?", a: "Yes. UGC, branding, design and editing sit alongside media buying, allowing account learnings to shape the next creative quickly." },
       { q: "How is performance reported?", a: "A weekly call and concise report cover spend, cost per outcome, creative findings and the decisions being made next." },
       { q: "How soon do results show?", a: "Early signal often appears within two weeks, while stable and planable acquisition performance usually needs a longer testing window." },
+    ],
+  },
+  {
+    slug: "ai-automation",
+    image: svcAutomation,
+    n: "06",
+    title: "AI Automation",
+    tagline: "Connected workflows that move work forward without constant follow-up.",
+    intro: "We map the repetitive work inside your business, connect the tools that already hold your information, and build dependable automations around the decisions your team makes every day. Leads, approvals, updates and handoffs move together instead of becoming another system for you to manage.",
+    span: "md:col-span-2",
+    deliverables: [
+      "Workflow discovery and automation opportunity audit",
+      "Connected lead, CRM, inbox, calendar and operations workflows",
+      "AI-assisted research, classification, drafting and routing",
+      "Human approval checkpoints for important decisions",
+      "Testing, monitoring, documentation and ongoing refinement",
+    ],
+    process: [
+      { step: "Map", detail: "We document what starts each process, where information lives and every decision that currently depends on a person remembering the next step. The map exposes delays, duplicate entry and the moments where automation can create genuine leverage.", image: automation1 },
+      { step: "Connect", detail: "Your existing tools are linked into one deliberate workflow, with clean data passing between forms, inboxes, calendars, CRMs and internal systems. Each connection has a defined purpose rather than adding technology for its own sake.", image: automation2 },
+      { step: "Control", detail: "We build rules, AI actions and human approval points so routine work moves automatically while sensitive decisions stay visible. Every exception has a clear route, preventing the workflow from becoming a black box.", image: automation3 },
+      { step: "Operate", detail: "The completed system is tested against real scenarios, monitored and refined as the business changes. You receive a dependable operational layer that keeps work moving and makes performance easy to inspect.", image: automation4 },
+    ],
+    outcome: "A connected operation where routine work progresses automatically and your team steps in only where judgement matters.",
+    faq: [
+      { q: "What can you automate?", a: "Common opportunities include lead capture and follow-up, CRM updates, reporting, approvals, onboarding, reminders, content operations and information moving between business tools." },
+      { q: "Do we need to replace our current software?", a: "Usually not. We begin with the tools your team already uses and connect or improve them before recommending any replacement." },
+      { q: "Will AI make decisions without us?", a: "Only where you approve it. Important, sensitive or irreversible actions can always include a human review checkpoint." },
+      { q: "What happens if a workflow fails?", a: "We design exception routes, logs and alerts into the system, then monitor and maintain it so failures are visible and recoverable." },
     ],
   },
 ];

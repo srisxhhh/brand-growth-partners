@@ -329,7 +329,7 @@ function ServicePage() {
             </Reveal>
 
             <div className="mt-10">
-              <LeadForm serviceTitle={service.title} />
+            <LeadForm serviceTitle={service.title} serviceSlug={service.slug} />
             </div>
 
 
