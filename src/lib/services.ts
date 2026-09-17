@@ -70,7 +70,7 @@ export const services: Service[] = [
     ],
     outcome: "One digital system that launches cleanly and stays healthy without becoming your second job.",
     faq: [
-      { q: "Can you handle both our website and mobile app?", a: "Yes. TECH combines both under one product team, so identity, data, releases and customer journeys remain consistent across every screen." },
+      { q: "Can you handle both our website and mobile app?", a: "Yes. Tech combines both under one product team, so identity, data, releases and customer journeys remain consistent across every screen." },
       { q: "Do you manage hosting and app-store releases?", a: "Yes. Hosting, domains, certificates, Apple and Google submissions, review responses and release management are handled end to end." },
       { q: "Can you take over an existing product?", a: "Usually. We first audit the current design, code and infrastructure, then recommend whether to improve, restructure or rebuild it." },
       { q: "What happens after launch?", a: "We monitor performance, crashes and uptime, ship updates, and cover progress in your weekly update and feedback call." },

@@ -120,9 +120,9 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
     const attribution = getAttribution();
     const page = window.location.pathname;
     const campaign = attributionSummary(attribution);
-    const answers = fields.map((field) => `${field.label}: ${values[field.key].trim()}`);
+    const answers = fields.map((field) => `${field.label}: ${(values[field.key] ?? "").trim()}`);
     const notes = answers.join("\n");
-    const message = [`New enquiry — ${serviceTitle}`, `Name: ${values.name.trim()}`, `Contact: ${values.contact.trim()}`, ...answers, `Page: ${page}`, `Campaign: ${campaign}`].join("\n");
+    const message = [`New enquiry — ${serviceTitle}`, `Name: ${(values["name"] ?? "").trim()}`, `Contact: ${(values["contact"] ?? "").trim()}`, ...answers, `Page: ${page}`, `Campaign: ${campaign}`].join("\n");
     const link = whatsappLink(message);
     lastLink.current = link;
 
@@ -131,8 +131,8 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
     trackWhatsAppClick(serviceTitle, "lead_form");
     void supabase.from("leads").insert({
       service: serviceTitle,
-      name: values.name.trim(),
-      email: values.contact.trim(),
+      name: (values["name"] ?? "").trim(),
+      email: (values["contact"] ?? "").trim(),
       notes,
       page,
       campaign,
@@ -164,9 +164,9 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
       <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden opacity-0"><label>Company website<input type="text" tabIndex={-1} autoComplete="off" onChange={(event) => { honeypot.current = event.target.value; }} /></label></div>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        <BriefField field={{ key: "name", label: "Name", placeholder: "Your name" }} value={values.name} error={errors.name} onChange={set("name")} className={fieldClass} />
-        <BriefField field={{ key: "contact", label: "Phone or email", placeholder: "+91… or you@company.com" }} value={values.contact} error={errors.contact} onChange={set("contact")} className={fieldClass} />
-        {fields.map((field) => <BriefField key={field.key} field={field} value={values[field.key]} error={errors[field.key]} onChange={set(field.key)} className={fieldClass} />)}
+        <BriefField field={{ key: "name", label: "Name", placeholder: "Your name" }} value={values["name"] ?? ""} error={errors["name"]} onChange={set("name")} className={fieldClass} />
+        <BriefField field={{ key: "contact", label: "Phone or email", placeholder: "+91… or you@company.com" }} value={values["contact"] ?? ""} error={errors["contact"]} onChange={set("contact")} className={fieldClass} />
+        {fields.map((field) => <BriefField key={field.key} field={field} value={values[field.key] ?? ""} error={errors[field.key]} onChange={set(field.key)} className={fieldClass} />)}
       </div>
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <button type="submit" className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground">Send to WhatsApp</button>
@@ -176,7 +176,7 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
   );
 }
 
-function BriefField({ field, value = "", error, onChange, className }: { field: Field; value?: string; error?: string; onChange: (event: { target: { value: string } }) => void; className: string }) {
+function BriefField({ field, value, error, onChange, className }: { field: Field; value: string; error: string | undefined; onChange: (event: { target: { value: string } }) => void; className: string }) {
   const wide = field.type === "textarea" ? " sm:col-span-2" : "";
   return (
     <label className={`block${wide}`}>
