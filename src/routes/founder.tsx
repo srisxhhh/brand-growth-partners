@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
 import srishAsset from "@/assets/srish.jpeg.asset.json";
+import { CALENDAR_LINK, WHATSAPP_NUMBER } from "@/lib/site";
+import { trackCalendarClick } from "@/lib/analytics";
 
 function DecisionRow() {
   const [dodges, setDodges] = useState(0);
@@ -57,7 +59,6 @@ function DecisionRow() {
 
 
 
-const WHATSAPP_NUMBER = "9511202129";
 const WHATSAPP_MESSAGE = encodeURIComponent(
   "Hi, I came across Well Handled and would like to discuss working with you."
 );
