@@ -87,6 +87,11 @@ export function trackWhatsAppClick(serviceTitle: string, source: string) {
   bumpLocalCounter(`whatsapp:${serviceTitle}:${source}`);
 }
 
+export function trackCalendarClick(serviceTitle: string, source: string) {
+  trackEvent("calendar_click", { service: serviceTitle, source });
+  bumpLocalCounter(`calendar:${serviceTitle}:${source}`);
+}
+
 export function trackSpamBlocked(serviceTitle: string, reason: string) {
   trackEvent("lead_form_blocked", { service: serviceTitle, reason });
 }
