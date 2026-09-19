@@ -306,6 +306,15 @@ function ServicePage() {
                 </p>
                 <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
                   <a
+                    href={CALENDAR_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackCalendarClick(service.title, "service_cta")}
+                    className="inline-flex items-center justify-center bg-background px-8 py-4 text-xs uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-background/90"
+                  >
+                    Book a 15-min call
+                  </a>
+                  <a
                     href={`https://wa.me/919511202129?text=${encodeURIComponent(
                       `Hi Well Handled — I'd like to talk about ${service.title}.`,
                     )}`}
