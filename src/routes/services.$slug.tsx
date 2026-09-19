@@ -1,9 +1,10 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { canonicalServiceSlug, serviceBySlug, services } from "@/lib/services";
+import { CALENDAR_LINK } from "@/lib/site";
 import { Reveal, RevealGroup, RisingText, fadeUp, pageTransition } from "@/components/reveal";
 import { LeadForm } from "@/components/lead-form";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackCalendarClick, trackWhatsAppClick } from "@/lib/analytics";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
